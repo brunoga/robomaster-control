@@ -1,6 +1,7 @@
 package systems
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/EngoEngine/ecs"
@@ -10,15 +11,17 @@ import (
 	"github.com/brunoga/robomaster/module/chassis/controller"
 )
 
+var (
+	zeroStickPosition = controller.StickPosition{}
+)
+
 type Chassis struct {
 	controllerEntityMap map[uint64]*entities.Chassis
 
-	previousLeftRight       float32
-	previousForwardBackward float32
-	previousMouseXDelta     float32
-	previousMouseYDelta     float32
+	previousChassisStickPosition controller.StickPosition
+	previousGimbalStickPosition  controller.StickPosition
 
-	lastMove time.Time
+	previousMoveTime time.Time
 }
 
 func (c *Chassis) New(w *ecs.World) {
@@ -47,47 +50,46 @@ func (c *Chassis) Update(dt float32) {
 		engo.Exit()
 	}
 
-	currentLeftRight := engo.Input.Axis("Left/Right").Value()
-	currentForwardBackward := engo.Input.Axis("Forward/Backward").Value()
+	currentChassisStickPosition := controller.StickPosition{
+		X: float64(engo.Input.Axis("Left/Right").Value()),
+		Y: float64(engo.Input.Axis("Forward/Backward").Value()),
+	}
 
-	currentMouseXDelta := clampValueTo(engo.Input.Axis("MouseXAxis").Value(), 100)
-	currentMouseYDelta := clampValueTo(engo.Input.Axis("MouseYAxis").Value(), 100)
+	currentGimbalStickPosition := controller.StickPosition{
+		X: float64(clampValueTo(engo.Input.Axis("MouseXAxis").Value(), 100) / 100),
+		Y: float64(clampValueTo(engo.Input.Axis("MouseYAxis").Value(), 100) / 100),
+	}
 
-	// Force a move if we are close to 1 second since the last move. A single move
-	// gets the robot moving for 1 second.
-	forceMove := time.Since(c.lastMove) > time.Millisecond*900
+	currentMoveTime := time.Now()
 
-	// Check if any movenet happened, if not, just return. We do this because
-	// it is wasteful to send requests to the robot 60 times per second.
-	if !forceMove && currentLeftRight == c.previousLeftRight &&
-		currentForwardBackward == c.previousForwardBackward &&
-		currentMouseXDelta == c.previousMouseXDelta &&
-		currentMouseYDelta == c.previousMouseYDelta {
-		return
+	// Check if our move status changed.
+	if currentChassisStickPosition == c.previousChassisStickPosition &&
+		currentGimbalStickPosition == c.previousGimbalStickPosition {
+		// Apparently not. Check if we are completelly stationary.
+		if c.previousChassisStickPosition == zeroStickPosition &&
+			c.previousGimbalStickPosition == zeroStickPosition {
+			// We are completelly stationary. Nothing to do.
+			return
+		} else {
+			// We are not completelly stationary. Maybe we should force a move.
+			forceMove := time.Since(c.previousMoveTime) > time.Millisecond*900
+			if !forceMove {
+				// Nope. Nothing to do.
+				return
+			}
+		}
 	}
 
 	// Update previous values to the current ones.
-	c.previousLeftRight = currentLeftRight
-	c.previousForwardBackward = currentForwardBackward
-	c.previousMouseXDelta = currentMouseXDelta
-	c.previousMouseYDelta = currentMouseYDelta
-
-	c.lastMove = time.Now()
+	c.previousChassisStickPosition = currentChassisStickPosition
+	c.previousGimbalStickPosition = currentGimbalStickPosition
+	c.previousMoveTime = currentMoveTime
 
 	for _, controllerEntity := range c.controllerEntityMap {
 		cec := controllerEntity.Chassis
 
-		chassisStickPosition := &controller.StickPosition{
-			X: float64(currentLeftRight),
-			Y: float64(currentForwardBackward),
-		}
-
-		gimbalStickPosition := &controller.StickPosition{
-			X: float64(currentMouseXDelta) / float64(100),
-			Y: float64(currentMouseYDelta) / float64(100),
-		}
-
-		cec.Chassis.Move(chassisStickPosition, gimbalStickPosition,
+		fmt.Println("Sending move command.")
+		cec.Chassis.Move(&currentChassisStickPosition, &currentGimbalStickPosition,
 			controller.ModeFPV)
 	}
 }
