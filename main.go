@@ -8,6 +8,7 @@ import (
 	"github.com/brunoga/robomaster"
 	"github.com/brunoga/robomaster-control/scenes"
 	"github.com/brunoga/robomaster/module"
+	"github.com/brunoga/robomaster/module/robot"
 	"github.com/brunoga/robomaster/unitybridge/support/logger"
 )
 
@@ -18,7 +19,7 @@ var (
 func main() {
 	flag.Parse()
 
-	l := logger.New(slog.LevelDebug)
+	l := logger.New(slog.LevelError)
 
 	c, err := robomaster.NewWithModules(l, 0, module.TypeAllButGamePad)
 	if err != nil {
@@ -26,6 +27,24 @@ func main() {
 	}
 
 	err = c.Start()
+	if err != nil {
+		panic(err)
+	}
+
+	// Cache and restore on exit the current speed level.
+	speedLevel, err := c.Robot().ChassisSpeedLevel()
+	if err != nil {
+		panic(err)
+	}
+	defer func(speedLevel robot.ChassisSpeedLevelType) {
+		err := c.Robot().SetChassisSpeedLevel(speedLevel)
+		if err != nil {
+			panic(err)
+		}
+	}(speedLevel)
+
+	// Set the speed level to slow.
+	err = c.Robot().SetChassisSpeedLevel(robot.ChassisSpeedLevelSlow)
 	if err != nil {
 		panic(err)
 	}
