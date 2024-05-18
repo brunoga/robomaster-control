@@ -1,6 +1,8 @@
 package systems
 
 import (
+	"time"
+
 	"github.com/EngoEngine/ecs"
 	"github.com/EngoEngine/engo"
 	"github.com/brunoga/robomaster-control/components"
@@ -15,6 +17,8 @@ type Chassis struct {
 	previousForwardBackward float32
 	previousMouseXDelta     float32
 	previousMouseYDelta     float32
+
+	lastMove time.Time
 }
 
 func (c *Chassis) New(w *ecs.World) {
@@ -49,8 +53,13 @@ func (c *Chassis) Update(dt float32) {
 	currentMouseXDelta := clampValueTo(engo.Input.Axis("MouseXAxis").Value(), 100)
 	currentMouseYDelta := clampValueTo(engo.Input.Axis("MouseYAxis").Value(), 100)
 
-	// Check if any movenet happened, if not, just return.
-	if currentLeftRight == c.previousLeftRight &&
+	// Force a move if we are close to 1 second since the last move. A single move
+	// gets the robot moving for 1 second.
+	forceMove := time.Since(c.lastMove) > time.Millisecond*900
+
+	// Check if any movenet happened, if not, just return. We do this because
+	// it is wasteful to send requests to the robot 60 times per second.
+	if !forceMove && currentLeftRight == c.previousLeftRight &&
 		currentForwardBackward == c.previousForwardBackward &&
 		currentMouseXDelta == c.previousMouseXDelta &&
 		currentMouseYDelta == c.previousMouseYDelta {
@@ -62,6 +71,8 @@ func (c *Chassis) Update(dt float32) {
 	c.previousForwardBackward = currentForwardBackward
 	c.previousMouseXDelta = currentMouseXDelta
 	c.previousMouseYDelta = currentMouseYDelta
+
+	c.lastMove = time.Now()
 
 	for _, controllerEntity := range c.controllerEntityMap {
 		cec := controllerEntity.Chassis

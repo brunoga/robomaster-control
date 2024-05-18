@@ -5,7 +5,7 @@ go 1.22.3
 require (
 	github.com/EngoEngine/ecs v1.0.5
 	github.com/EngoEngine/engo v1.0.8
-	github.com/brunoga/robomaster v0.0.2
+	github.com/brunoga/robomaster v0.0.3
 	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20240506104042-037f3cc74f2a
 )
 
