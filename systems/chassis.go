@@ -1,7 +1,6 @@
 package systems
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/EngoEngine/ecs"
@@ -88,7 +87,6 @@ func (c *Chassis) Update(dt float32) {
 	for _, controllerEntity := range c.controllerEntityMap {
 		cec := controllerEntity.Chassis
 
-		fmt.Println("Sending move command.")
 		cec.Chassis.Move(&currentChassisStickPosition, &currentGimbalStickPosition,
 			controller.ModeFPV)
 	}
