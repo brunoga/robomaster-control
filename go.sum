@@ -15,6 +15,8 @@ github.com/brunoga/robomaster v0.0.4 h1:ZY0xAvJxIEIaQoF4uRhDgfOVfw5U5/b7yp9njhr0
 github.com/brunoga/robomaster v0.0.4/go.mod h1:Fy74p8EAdDvYIe20GEdU1tBG0TbwHTKVTPX2mSlACTQ=
 github.com/brunoga/robomaster v0.0.5 h1:TFKZvusBSZKxtymFPulFel4V0KJHu8en2goqCG2d2pw=
 github.com/brunoga/robomaster v0.0.5/go.mod h1:Fy74p8EAdDvYIe20GEdU1tBG0TbwHTKVTPX2mSlACTQ=
+github.com/brunoga/robomaster v0.0.6 h1:LggJsZ0WEbX+FYj30g6PIPw03Gl1NQl7koxZ/DlM1Dw=
+github.com/brunoga/robomaster v0.0.6/go.mod h1:Fy74p8EAdDvYIe20GEdU1tBG0TbwHTKVTPX2mSlACTQ=
 github.com/brunoga/timedsignalwaiter v1.0.0 h1:qrOJVQHkEs3THyiA6VJq9x5gk332Y+P1so5oNKXKyqY=
 github.com/brunoga/timedsignalwaiter v1.0.0/go.mod h1:BdJJP3W2pKIagoTPlFpoReg5sxZQ2rDa0ZspHWoX7Sw=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -69,6 +71,8 @@ golang.org/x/exp v0.0.0-20190306152737-a1d7652674e8/go.mod h1:CJ0aWSM057203Lf6IL
 golang.org/x/exp v0.0.0-20190731235908-ec7cb31e5a56/go.mod h1:JhuoJpWY28nO4Vef9tZUw9qufEGTyX1+7lmHxV5q5G4=
 golang.org/x/exp/shiny v0.0.0-20240506185415-9bf2ced13842 h1:kEvPiBVeT1JJGw/3THfe1W1zvTAvU1V6pCFV0icZvQs=
 golang.org/x/exp/shiny v0.0.0-20240506185415-9bf2ced13842/go.mod h1:3F+MieQB7dRYLTmnncoFbb1crS5lfQoTfDgQy6K4N0o=
+golang.org/x/exp/shiny v0.0.0-20240525044651-4c93da0ed11d h1:NRBIrtUw7ZKcccaGmvwwMUwGTFGx6tVCtB+etaxQE5Q=
+golang.org/x/exp/shiny v0.0.0-20240525044651-4c93da0ed11d/go.mod h1:3F+MieQB7dRYLTmnncoFbb1crS5lfQoTfDgQy6K4N0o=
 golang.org/x/image v0.0.0-20190227222117-0694c2d4d067/go.mod h1:kZ7UVZpmo3dzQBMxlp+ypCbDeSB+sBbTgSJuh5dn5js=
 golang.org/x/image v0.0.0-20190802002840-cff245a6509b/go.mod h1:FeLwcggjj3mMvU+oOTbSwawSJRM1uh48EjtB4UJZlP0=
 golang.org/x/image v0.16.0 h1:9kloLAKhUufZhA12l5fwnx2NZW39/we1UhBesW433jw=

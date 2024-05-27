@@ -5,8 +5,9 @@ go 1.22.3
 require (
 	github.com/EngoEngine/ecs v1.0.5
 	github.com/EngoEngine/engo v1.0.8
-	github.com/brunoga/robomaster v0.0.5
+	github.com/brunoga/robomaster v0.0.6
 	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20240506104042-037f3cc74f2a
+	golang.org/x/image v0.16.0
 )
 
 require (
@@ -29,8 +30,7 @@ require (
 	github.com/veandco/go-sdl2 v0.4.39 // indirect
 	github.com/vulkan-go/glfw v0.0.0-20210402172934-58379a80228d // indirect
 	github.com/vulkan-go/vulkan v0.0.0-20221209234627-c0a353ae26c8 // indirect
-	golang.org/x/exp/shiny v0.0.0-20240506185415-9bf2ced13842 // indirect
-	golang.org/x/image v0.16.0 // indirect
+	golang.org/x/exp/shiny v0.0.0-20240525044651-4c93da0ed11d // indirect
 	golang.org/x/mobile v0.0.0-20240520174638-fa72addaaa1b // indirect
 	golang.org/x/net v0.25.0 // indirect
 	golang.org/x/sys v0.20.0 // indirect
