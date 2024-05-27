@@ -5,7 +5,7 @@ import (
 	"github.com/brunoga/robomaster-control/components"
 )
 
-type Chassis struct {
+type Controller struct {
 	*ecs.BasicEntity
-	*components.Chassis
+	*components.Controller
 }

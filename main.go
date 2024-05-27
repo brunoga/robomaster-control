@@ -30,6 +30,17 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	defer func() {
+		err = c.Stop()
+		if err != nil {
+			panic(err)
+		}
+	}()
+
+	err = c.Robot().EnableFunction(robot.FunctionTypeMovementControl, true)
+	if err != nil {
+		panic(err)
+	}
 
 	// Cache and restore on exit the current speed level.
 	speedLevel, err := c.Robot().ChassisSpeedLevel()
@@ -44,7 +55,7 @@ func main() {
 	}(speedLevel)
 
 	// Set the speed level to slow.
-	err = c.Robot().SetChassisSpeedLevel(robot.ChassisSpeedLevelSlow)
+	err = c.Robot().SetChassisSpeedLevel(robot.ChassisSpeedLevelFast)
 	if err != nil {
 		panic(err)
 	}

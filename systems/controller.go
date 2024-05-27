@@ -7,15 +7,15 @@ import (
 	"github.com/EngoEngine/engo"
 	"github.com/brunoga/robomaster-control/components"
 	"github.com/brunoga/robomaster-control/entities"
-	"github.com/brunoga/robomaster/module/chassis/controller"
+	"github.com/brunoga/robomaster/module/controller"
 )
 
 var (
 	zeroStickPosition = controller.StickPosition{}
 )
 
-type Chassis struct {
-	controllerEntityMap map[uint64]*entities.Chassis
+type Controller struct {
+	controllerEntityMap map[uint64]*entities.Controller
 
 	previousChassisStickPosition controller.StickPosition
 	previousGimbalStickPosition  controller.StickPosition
@@ -23,28 +23,28 @@ type Chassis struct {
 	previousMoveTime time.Time
 }
 
-func (c *Chassis) New(w *ecs.World) {
-	c.controllerEntityMap = make(map[uint64]*entities.Chassis)
+func (c *Controller) New(w *ecs.World) {
+	c.controllerEntityMap = make(map[uint64]*entities.Controller)
 }
 
-func (c *Chassis) Add(basicEntity *ecs.BasicEntity,
-	controllerComponent *components.Chassis) {
+func (c *Controller) Add(basicEntity *ecs.BasicEntity,
+	controllerComponent *components.Controller) {
 	_, ok := c.controllerEntityMap[basicEntity.ID()]
 	if ok {
 		return
 	}
 
-	c.controllerEntityMap[basicEntity.ID()] = &entities.Chassis{
+	c.controllerEntityMap[basicEntity.ID()] = &entities.Controller{
 		BasicEntity: basicEntity,
-		Chassis:     controllerComponent,
+		Controller:  controllerComponent,
 	}
 }
 
-func (c *Chassis) Remove(basicEntity ecs.BasicEntity) {
+func (c *Controller) Remove(basicEntity ecs.BasicEntity) {
 	delete(c.controllerEntityMap, basicEntity.ID())
 }
 
-func (c *Chassis) Update(dt float32) {
+func (c *Controller) Update(dt float32) {
 	if btn := engo.Input.Button("exit"); btn.JustPressed() {
 		engo.Exit()
 	}
@@ -85,9 +85,9 @@ func (c *Chassis) Update(dt float32) {
 	c.previousMoveTime = currentMoveTime
 
 	for _, controllerEntity := range c.controllerEntityMap {
-		cec := controllerEntity.Chassis
+		cec := controllerEntity.Controller
 
-		cec.Chassis.Move(&currentChassisStickPosition, &currentGimbalStickPosition,
+		cec.Controller.Move(&currentChassisStickPosition, &currentGimbalStickPosition,
 			controller.ModeFPV)
 	}
 }

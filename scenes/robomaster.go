@@ -34,15 +34,15 @@ func (r *Robomaster) Setup(u engo.Updater) {
 
 	engo.Input.RegisterButton("exit", engo.KeyEscape)
 
-	chassis := &components.Chassis{
-		Chassis: r.Client.Chassis(),
+	controller := &components.Controller{
+		Controller: r.Client.Controller(),
 	}
 
-	chassisBasicEntity := ecs.NewBasic()
+	controllerBasicEntity := ecs.NewBasic()
 
-	chassisEntity := entities.Chassis{
-		BasicEntity: &chassisBasicEntity,
-		Chassis:     chassis,
+	controllerEntity := entities.Controller{
+		BasicEntity: &controllerBasicEntity,
+		Controller:  controller,
 	}
 
 	gunComponent := &components.Gun{
@@ -71,17 +71,18 @@ func (r *Robomaster) Setup(u engo.Updater) {
 	w.AddSystem(&systems.Video{
 		Camera: r.Client.Camera(),
 	})
-	w.AddSystem(&systems.Chassis{})
+	w.AddSystem(&systems.Controller{})
 	w.AddSystem(&systems.Gun{})
-	w.AddSystem(&common.FPSSystem{
-		Display: true,
+	w.AddSystem(&systems.Information{
+		Robot:      r.Client.Robot(),
+		Connection: r.Client.Connection(),
 	})
 
 	for _, system := range w.Systems() {
 		switch sys := system.(type) {
-		case *systems.Chassis:
-			sys.Add(chassisEntity.BasicEntity,
-				chassis)
+		case *systems.Controller:
+			sys.Add(controllerEntity.BasicEntity,
+				controller)
 		case *systems.Gun:
 			sys.Add(gunEntity.BasicEntity, gunComponent)
 		}
@@ -94,8 +95,4 @@ func (r *Robomaster) Type() string {
 
 func (r *Robomaster) Exit() {
 	fmt.Println("Exiting...")
-	err := r.Client.Stop()
-	if err != nil {
-		fmt.Println("Error stopping client:", err)
-	}
 }
