@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	"log/slog"
+	"strings"
 
 	"github.com/EngoEngine/engo"
 	"github.com/brunoga/robomaster"
@@ -14,12 +14,16 @@ import (
 
 var (
 	fullscreen = flag.Bool("fullscreen", false, "Run in fullscreen mode.")
+	logGroups  = flag.String("log-groups", "", "Comma separated list of log "+
+		"groups to enable. Empty to enable all.")
 )
 
 func main() {
 	flag.Parse()
 
-	l := logger.New(slog.LevelError)
+	allowedGroups := strings.Split(*logGroups, ",")
+
+	l := logger.New(logger.LevelTrace, allowedGroups...)
 
 	c, err := robomaster.NewWithModules(l, 0, module.TypeAllButGamePad)
 	if err != nil {
