@@ -9,7 +9,7 @@ import (
 	"github.com/EngoEngine/engo/common"
 	"github.com/brunoga/robomaster-control/entities"
 	"github.com/brunoga/robomaster/module/camera"
-	"github.com/brunoga/robomaster/unitybridge/support/token"
+	"github.com/brunoga/robomaster/support/token"
 )
 
 type Video struct {

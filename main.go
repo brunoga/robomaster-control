@@ -9,7 +9,7 @@ import (
 	"github.com/brunoga/robomaster-control/scenes"
 	"github.com/brunoga/robomaster/module"
 	"github.com/brunoga/robomaster/module/robot"
-	"github.com/brunoga/robomaster/unitybridge/support/logger"
+	"github.com/brunoga/robomaster/support/logger"
 )
 
 var (
