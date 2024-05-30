@@ -11,12 +11,16 @@ github.com/Noofbiz/sdlMojaveFix v0.0.1 h1:Vz4HSG7QQ5gkOWeZsSUFCGJAvMoRUHloTwF80l
 github.com/Noofbiz/sdlMojaveFix v0.0.1/go.mod h1:ZvRLF4Dk75OnTtHfCMClqgwrX0u531XWaai0lNGzKWE=
 github.com/Noofbiz/tmx v0.2.0 h1:5bVZn4FN+8HVhvl2XmAiI9RFlo9/6xauhco1KGcJ+38=
 github.com/Noofbiz/tmx v0.2.0/go.mod h1:gL6mQUTp1Vi9pq/gmCgyotzJ35lOQF2C2NKJrQtltAE=
+github.com/brunoga/groupfilterhandler v0.0.0-20240529152547-549eb8e3c392 h1:CUnCn5Q+heeKFZhCzjtrL859ZbbDoPUl6T2fPY/ZmNc=
+github.com/brunoga/groupfilterhandler v0.0.0-20240529152547-549eb8e3c392/go.mod h1:RqXgYZreDlnAe4UifRSYxSA94W+TbWTAwU6SfN9UeRo=
 github.com/brunoga/robomaster v0.0.4 h1:ZY0xAvJxIEIaQoF4uRhDgfOVfw5U5/b7yp9njhr0ytE=
 github.com/brunoga/robomaster v0.0.4/go.mod h1:Fy74p8EAdDvYIe20GEdU1tBG0TbwHTKVTPX2mSlACTQ=
 github.com/brunoga/robomaster v0.0.5 h1:TFKZvusBSZKxtymFPulFel4V0KJHu8en2goqCG2d2pw=
 github.com/brunoga/robomaster v0.0.5/go.mod h1:Fy74p8EAdDvYIe20GEdU1tBG0TbwHTKVTPX2mSlACTQ=
 github.com/brunoga/robomaster v0.0.6 h1:LggJsZ0WEbX+FYj30g6PIPw03Gl1NQl7koxZ/DlM1Dw=
 github.com/brunoga/robomaster v0.0.6/go.mod h1:Fy74p8EAdDvYIe20GEdU1tBG0TbwHTKVTPX2mSlACTQ=
+github.com/brunoga/robomaster v0.0.7 h1:ijrx4a2psl2UEDYcSKTiBgWuichvJ5Za0rEWVwRqETY=
+github.com/brunoga/robomaster v0.0.7/go.mod h1:4lqHW34sbBtMzhxS/tGN5j8y7z/9AmfMB0mlkYrqvpo=
 github.com/brunoga/timedsignalwaiter v1.0.0 h1:qrOJVQHkEs3THyiA6VJq9x5gk332Y+P1so5oNKXKyqY=
 github.com/brunoga/timedsignalwaiter v1.0.0/go.mod h1:BdJJP3W2pKIagoTPlFpoReg5sxZQ2rDa0ZspHWoX7Sw=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -59,6 +63,8 @@ github.com/stretchr/testify v1.9.0 h1:HtqpIVDClZ4nwg75+f6Lvsy/wHu+3BoSGCbBAcpTsT
 github.com/stretchr/testify v1.9.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
 github.com/veandco/go-sdl2 v0.4.39 h1:OsaEcXb70FQjdOfclzYPopwlvZlD8hOiKp1mm1ufD1U=
 github.com/veandco/go-sdl2 v0.4.39/go.mod h1:OROqMhHD43nT4/i9crJukyVecjPNYYuCofep6SNiAjY=
+github.com/veandco/go-sdl2 v0.4.40 h1:fZv6wC3zz1Xt167P09gazawnpa0KY5LM7JAvKpX9d/U=
+github.com/veandco/go-sdl2 v0.4.40/go.mod h1:OROqMhHD43nT4/i9crJukyVecjPNYYuCofep6SNiAjY=
 github.com/vulkan-go/glfw v0.0.0-20210402172934-58379a80228d h1:ATkYUewjackCJzqJMjknP3Swp9aNj18A8P/eqSW19qQ=
 github.com/vulkan-go/glfw v0.0.0-20210402172934-58379a80228d/go.mod h1:ZV+uQh1Pj/hAEWFAdC0ezZ8ws/ZSwroFi92meX6wwws=
 github.com/vulkan-go/vulkan v0.0.0-20221209234627-c0a353ae26c8 h1:qPHDyQTLtn40kezY6y4UL7bH7Z0Im9wSu1tQtM2wbUU=
@@ -73,6 +79,8 @@ golang.org/x/exp/shiny v0.0.0-20240506185415-9bf2ced13842 h1:kEvPiBVeT1JJGw/3THf
 golang.org/x/exp/shiny v0.0.0-20240506185415-9bf2ced13842/go.mod h1:3F+MieQB7dRYLTmnncoFbb1crS5lfQoTfDgQy6K4N0o=
 golang.org/x/exp/shiny v0.0.0-20240525044651-4c93da0ed11d h1:NRBIrtUw7ZKcccaGmvwwMUwGTFGx6tVCtB+etaxQE5Q=
 golang.org/x/exp/shiny v0.0.0-20240525044651-4c93da0ed11d/go.mod h1:3F+MieQB7dRYLTmnncoFbb1crS5lfQoTfDgQy6K4N0o=
+golang.org/x/exp/shiny v0.0.0-20240529005216-23cca8864a10 h1:nzSZlHjEQgqpuqTkJztCb9FsnCxsz3c+kQCpLpJ0Cf0=
+golang.org/x/exp/shiny v0.0.0-20240529005216-23cca8864a10/go.mod h1:3F+MieQB7dRYLTmnncoFbb1crS5lfQoTfDgQy6K4N0o=
 golang.org/x/image v0.0.0-20190227222117-0694c2d4d067/go.mod h1:kZ7UVZpmo3dzQBMxlp+ypCbDeSB+sBbTgSJuh5dn5js=
 golang.org/x/image v0.0.0-20190802002840-cff245a6509b/go.mod h1:FeLwcggjj3mMvU+oOTbSwawSJRM1uh48EjtB4UJZlP0=
 golang.org/x/image v0.16.0 h1:9kloLAKhUufZhA12l5fwnx2NZW39/we1UhBesW433jw=
