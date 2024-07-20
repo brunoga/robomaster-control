@@ -1,6 +1,7 @@
 package systems
 
 import (
+	"fmt"
 	"image"
 	"unsafe"
 
@@ -16,7 +17,8 @@ type Video struct {
 	videoEntity      *entities.Video
 	frameCh          chan *image.NRGBA
 	dataHandlerToken token.Token
-	Camera           *camera.Camera
+	Camera           *camera.Module
+	Recording        bool
 }
 
 func (v *Video) New(w *ecs.World) {
@@ -62,6 +64,24 @@ func (v *Video) Add() {}
 func (v *Video) Remove(basic ecs.BasicEntity) {}
 
 func (v *Video) Update(dt float32) {
+	if btn := engo.Input.Button("RecordingStartStop"); btn.JustPressed() {
+		if !v.Recording {
+			err := v.Camera.StartRecordingVideo()
+			if err != nil {
+				panic(err)
+			}
+			fmt.Println("Recording started")
+		} else {
+			err := v.Camera.StopRecordingVideo()
+			if err != nil {
+				panic(err)
+			}
+			fmt.Println("Recording stopped")
+		}
+
+		v.Recording = !v.Recording
+	}
+
 	select {
 	case img := <-v.frameCh:
 		obj := common.NewImageObject(img)

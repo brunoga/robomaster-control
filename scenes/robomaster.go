@@ -34,6 +34,8 @@ func (r *Robomaster) Setup(u engo.Updater) {
 
 	engo.Input.RegisterButton("exit", engo.KeyEscape)
 
+	engo.Input.RegisterButton("RecordingStartStop", engo.KeySpace)
+
 	controller := &components.Controller{
 		Controller: r.Client.Controller(),
 	}
