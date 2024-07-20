@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"strings"
 
 	"github.com/EngoEngine/engo"
@@ -21,9 +22,16 @@ var (
 func main() {
 	flag.Parse()
 
+	var l *logger.Logger
+
 	allowedGroups := strings.Split(*logGroups, ",")
 
-	l := logger.New(logger.LevelTrace, allowedGroups...)
+	if len(allowedGroups) == 1 && allowedGroups[0] == "" {
+		l = logger.New(logger.LevelTrace)
+	} else {
+		fmt.Println("Allowed groups:", allowedGroups)
+		l = logger.New(logger.LevelTrace, allowedGroups...)
+	}
 
 	c, err := robomaster.NewWithModules(l, 0, module.TypeAllButGamePad)
 	if err != nil {
