@@ -59,7 +59,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	defer func(speedLevel robot.ChassisSpeedLevelType) {
+	defer func(speedLevel robot.ChassisSpeedLevel) {
 		err := c.Robot().SetChassisSpeedLevel(speedLevel)
 		if err != nil {
 			panic(err)
