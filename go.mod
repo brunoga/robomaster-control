@@ -5,7 +5,7 @@ go 1.22.3
 require (
 	github.com/EngoEngine/ecs v1.0.5
 	github.com/EngoEngine/engo v1.0.8
-	github.com/brunoga/robomaster v0.0.10
+	github.com/brunoga/robomaster v0.0.11
 	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20240506104042-037f3cc74f2a
 	golang.org/x/image v0.18.0
 )
@@ -34,6 +34,6 @@ require (
 	golang.org/x/exp/shiny v0.0.0-20240719175910-8a7402abbf56 // indirect
 	golang.org/x/mobile v0.0.0-20240716161057-1ad2df20a8b6 // indirect
 	golang.org/x/net v0.27.0 // indirect
-	golang.org/x/sys v0.22.0 // indirect
+	golang.org/x/sys v0.23.0 // indirect
 	golang.org/x/text v0.16.0 // indirect
 )

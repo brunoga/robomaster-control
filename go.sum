@@ -19,6 +19,8 @@ github.com/brunoga/robomaster v0.0.9 h1:/NmJt2mnlnx2IZMKnJvt4uUJ9lC9AcpS2Fa5ZKtX
 github.com/brunoga/robomaster v0.0.9/go.mod h1:fbwlO2QwuMyle6iCgq3QSX/XP3fEBAxjTqdu86eVWXo=
 github.com/brunoga/robomaster v0.0.10 h1:evxd5UniEKk68U+LJOmX0/PZt0DYb6yQ5wv2acH38QA=
 github.com/brunoga/robomaster v0.0.10/go.mod h1:r7XGUThYcUoCZhmEqToKoq8NpAJCQfjfrGghZdVjVIA=
+github.com/brunoga/robomaster v0.0.11 h1:9d/BFV415NlTtcmMEPA2xSj/LjMOC1F/0evVzLn00Qo=
+github.com/brunoga/robomaster v0.0.11/go.mod h1:r7XGUThYcUoCZhmEqToKoq8NpAJCQfjfrGghZdVjVIA=
 github.com/brunoga/timedsignalwaiter v1.0.0 h1:qrOJVQHkEs3THyiA6VJq9x5gk332Y+P1so5oNKXKyqY=
 github.com/brunoga/timedsignalwaiter v1.0.0/go.mod h1:BdJJP3W2pKIagoTPlFpoReg5sxZQ2rDa0ZspHWoX7Sw=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -114,6 +116,8 @@ golang.org/x/sys v0.21.0 h1:rF+pYz3DAGSQAxAu1CbC7catZg4ebC4UIeIhKxBZvws=
 golang.org/x/sys v0.21.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
 golang.org/x/sys v0.22.0 h1:RI27ohtqKCnwULzJLqkv897zojh5/DwS/ENaMzUOaWI=
 golang.org/x/sys v0.22.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
+golang.org/x/sys v0.23.0 h1:YfKFowiIMvtgl1UERQoTPPToxltDeZfbj4H7dVUCwmM=
+golang.org/x/sys v0.23.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
 golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/text v0.3.6/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
