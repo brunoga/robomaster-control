@@ -35,6 +35,7 @@ func (r *Robomaster) Setup(u engo.Updater) {
 	engo.Input.RegisterButton("exit", engo.KeyEscape)
 
 	engo.Input.RegisterButton("RecordingStartStop", engo.KeySpace)
+	engo.Input.RegisterButton("StartStop", engo.KeyF1)
 
 	controller := &components.Controller{
 		Controller: r.Client.Controller(),
@@ -84,7 +85,7 @@ func (r *Robomaster) Setup(u engo.Updater) {
 		switch sys := system.(type) {
 		case *systems.Controller:
 			sys.Add(controllerEntity.BasicEntity,
-				controller)
+				controller, r.Client)
 		case *systems.Gun:
 			sys.Add(gunEntity.BasicEntity, gunComponent)
 		}

@@ -1,10 +1,12 @@
 package systems
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/EngoEngine/ecs"
 	"github.com/EngoEngine/engo"
+	"github.com/brunoga/robomaster"
 	"github.com/brunoga/robomaster-control/components"
 	"github.com/brunoga/robomaster-control/entities"
 	"github.com/brunoga/robomaster/module/controller"
@@ -28,7 +30,7 @@ func (c *Controller) New(w *ecs.World) {
 }
 
 func (c *Controller) Add(basicEntity *ecs.BasicEntity,
-	controllerComponent *components.Controller) {
+	controllerComponent *components.Controller, client *robomaster.Client) {
 	_, ok := c.controllerEntityMap[basicEntity.ID()]
 	if ok {
 		return
@@ -37,6 +39,7 @@ func (c *Controller) Add(basicEntity *ecs.BasicEntity,
 	c.controllerEntityMap[basicEntity.ID()] = &entities.Controller{
 		BasicEntity: basicEntity,
 		Controller:  controllerComponent,
+		Client:      client,
 	}
 }
 
@@ -47,6 +50,25 @@ func (c *Controller) Remove(basicEntity ecs.BasicEntity) {
 func (c *Controller) Update(dt float32) {
 	if btn := engo.Input.Button("exit"); btn.JustPressed() {
 		engo.Exit()
+	}
+
+	if btn := engo.Input.Button("StartStop"); btn.JustPressed() {
+		fmt.Println("Start/Stop")
+		for _, controllerEntity := range c.controllerEntityMap {
+			client := controllerEntity.Client
+			if client.Connection().Connected() {
+				err := client.Stop()
+				if err != nil {
+					panic(fmt.Sprintln("Error stopping client:", err))
+				}
+			} else {
+				err := client.Start()
+				if err != nil {
+					panic(fmt.Sprintln("Error starting client:", err))
+				}
+			}
+		}
+		return
 	}
 
 	currentChassisStickPosition := controller.StickPosition{

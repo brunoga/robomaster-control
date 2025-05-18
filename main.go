@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log/slog"
 	"strings"
 
 	"github.com/EngoEngine/engo"
@@ -27,7 +28,7 @@ func main() {
 	allowedGroups := strings.Split(*logGroups, ",")
 
 	if len(allowedGroups) == 1 && allowedGroups[0] == "" {
-		l = logger.New(logger.LevelTrace)
+		l = logger.New(slog.LevelDebug)
 	} else {
 		fmt.Println("Allowed groups:", allowedGroups)
 		l = logger.New(logger.LevelTrace, allowedGroups...)
@@ -45,7 +46,7 @@ func main() {
 	defer func() {
 		err = c.Stop()
 		if err != nil {
-			panic(err)
+			fmt.Println(fmt.Errorf("Error stopping client: %v", err))
 		}
 	}()
 
